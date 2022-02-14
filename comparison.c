@@ -90,7 +90,26 @@ void fill_null()
 void fscanf_array(FILE* fin, long long* array, int size) // funtion read arrays from file
 {
     for (int i = 0; i < size; i++)
-        fscanf(fin, "%i", &array[i]);
+        fscanf(fin, "%lld", &array[i]);
+}
+
+
+void check_correctness(long long* array, int size)
+{
+    for (int i = 1; i < size; i++)
+        if (mabs(array[i - 1]) > mabs(array[i]))
+        {
+            printf("Incorrect!!!!!!!!!!!!!!!!!!!!\n");
+            return;
+        }
+}
+
+
+void printf_array(long long* array, int size) //function outputs an array of size 'size' to a file
+{
+    for (int i = 0; i < size; i++)
+        printf("%lld ", array[i]);
+    printf("\n");
 }
 
 
@@ -116,21 +135,25 @@ int main(void )
             memcpy(array_qsort, array_shell, current_size * sizeof(long long)); // copy array
 
             fill_null(); // assignes constants cnt_swaps and cnt_compares the value 0
+            //printf_array(array_shell, current_size);
             shell_sort(array_shell, current_size); // start shell sort for array array_shell
+            check_correctness(array_shell, current_size);
+            //printf_array(array_shell, current_size);
             printf("Shell, type %i array: %i (swaps), %i (comps)\n", j + 1, cnt_swaps, cnt_compares); // print the result of shell sort
 
             fill_null(); // assignes constants cnt_swaps and cnt_compares the value 0
             quicksort(array_qsort, current_size); // start quick sort for array array_qsort
+            check_correctness(array_qsort, current_size);
+            //printf_array(array_qsort, current_size);
             printf("Qsort, type %i array: %i (swaps), %i (comps)\n", j + 1, cnt_swaps, cnt_compares); // print the result of quick sort
         }
-        
+
         free(array_shell); // free memory
         free(array_qsort); // free memory
-        
+
         printf("\n");
     }
 
     fclose(fin); // close file
     return 0;
 }
-
