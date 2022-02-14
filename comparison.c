@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 enum {DIFF_SIZES = 4, DIFF_TYPES = 4};
 
@@ -95,6 +96,7 @@ void fscanf_array(FILE* fin, long long* array, int size) // funtion read arrays 
 
 int main(void )
 {
+    srand(time(NULL));
     FILE* fin = fopen("data.txt", "r"); // open file for reading
 
     for (int i = 0; i < DIFF_SIZES; i++) // cycle in different sizes
