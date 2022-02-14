@@ -123,6 +123,10 @@ int main(void )
             quicksort(array_qsort, current_size); // start quick sort for array array_qsort
             printf("Qsort, type %i array: %i (swaps), %i (comps)\n", j + 1, cnt_swaps, cnt_compares); // print the result of quick sort
         }
+        
+        free(array_shell); // free memory
+        free(array_qsort); // free memory
+        
         printf("\n");
     }
 
