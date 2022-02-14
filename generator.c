@@ -64,6 +64,8 @@ int main(void )
 
         gen_rnd(array, current_size); // generate random array
         fprintf_array(fout, array, current_size); // print random array
+        
+        free(array); // free memory
     }
 
     fclose(fout); // close file
