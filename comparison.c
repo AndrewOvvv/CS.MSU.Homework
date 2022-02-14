@@ -37,7 +37,7 @@ void shell_sort(long long *array, int size) // function which realize shell sort
 }
 
 
-void quicksort(int* array, int size){
+void quicksort(long long* array, int size){
     int i, j, pivot;
     long long temp;
     int first = 0, last = size;
